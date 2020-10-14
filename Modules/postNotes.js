@@ -6,16 +6,12 @@ app.post('/notes', (req, res) => {
   const body = req.body
   const id = body.id
   const parsedId = parseInt(id)
-  const get_data = db.get('notes')
-    .find({ id: parsedId })
-    .value()
+  const get_data = db.getIndex(id)
   if (get_data) {
-    res.status(409).send('COnflict')
+    res.status(409).send('Conflict')
   } else {
-    db.get('notes')
-      .push(body)
-      .write()
-    res.send(body)
+    db.postNotes(body)
+    res.send('Succesfully added : ' + body)
   }
 })
 

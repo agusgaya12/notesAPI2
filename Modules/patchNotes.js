@@ -5,19 +5,9 @@ const app = express.Router()
 app.patch('/notes', (req, res) => {
     const body = req.body
     const id = req.query.id
-    const parsedId = parseInt(id)
-    const get_data = db.get('notes')
-    console.log(get_data)
-        .find({ id: parsedId })
-        .value()
-
+    const get_data = db.getIndex(id)
     if (get_data) {
-        db.get('notes')
-            .find({ id: parsedId })
-            .assign(body)
-            .write()
-
-        body.id = id
+        db.editNotes(id, body)
         res.send(body)
     } else {
         res.status(404).send('Data Not Found')
