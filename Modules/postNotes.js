@@ -4,7 +4,6 @@ const app = express.Router()
 
 app.post('/notes', (req, res) => {
   const body = req.body
-  // TODO 7. use lowdb push method
   const id = body.id
   const parsedId = parseInt(id)
   const get_data = db.get('notes')
