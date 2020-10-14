@@ -1,5 +1,7 @@
-// ============================ To do 2 ============================
-// TODO 8. uncomment POST Request handler
+const express = require('express')
+const db = require('../Controller/db')
+const app = express.Router()
+
 app.patch('/notes', (req, res) => {
     const body = req.body
     const id = req.query.id
@@ -21,4 +23,4 @@ app.patch('/notes', (req, res) => {
         res.status(404).send('Data Not Found')
     }
 })
-// ============================ Batas TO do 2 ============================
+module.exports = app
