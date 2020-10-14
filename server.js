@@ -9,12 +9,10 @@ const db = low(adapter)
 
 app.use(bodyParser.json())
 
-
-
 app.get('/', (req, res) => {
   res.send('hello world!')
 })
 
 app.listen(3000, () => {
-  console.log(`server is listening on http://localhost:3000`);
+  console.log(`server is listening http://localhost:3000`);
 })
